@@ -26,7 +26,7 @@ public class MilkFactory extends CreateWaybill implements Factory {
     try (IDocumentSession session = DocumentStoreHolder.getStore().openSession()) {
       int storedRacks = session.query(Rack.class).whereEquals("status", Rack.Status.STORED).count();
       if (flipFlop) {
-        if (storedRacks < (Data.modules * 30))
+        if (storedRacks < (Data.modules * 25))
           sendWaybill();
       } else {
         if (storedRacks > (Data.modules * 20))
